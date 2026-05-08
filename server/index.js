@@ -44,6 +44,11 @@ app.get('/api/health', (req, res) => {
   res.status(200).json({ status: 'ok', message: 'Server is running' });
 });
 
+// Root endpoint
+app.get('/', (req, res) => {
+  res.status(200).json({ message: 'Expense Tracker API is running' });
+});
+
 // Database connection
 mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/expense-tracker')
   .then(() => {
