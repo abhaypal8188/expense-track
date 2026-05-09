@@ -48,7 +48,7 @@ router.post('/register', async (req, res) => {
       user: { id: savedUser._id, name: savedUser.name, email: savedUser.email }
     });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ message: error.message });
   }
 });
 
@@ -77,7 +77,7 @@ router.post('/login', async (req, res) => {
       user: { id: user._id, name: user.name, email: user.email }
     });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ message: error.message });
   }
 });
 
@@ -86,7 +86,7 @@ router.get('/me', auth, async (req, res) => {
     const user = await User.findById(req.user).select('-password');
     res.json(user);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ message: error.message });
   }
 });
 

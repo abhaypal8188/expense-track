@@ -15,9 +15,11 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // CORS - Allow requests from the frontend (configured via env var)
+const clientUrl = process.env.CLIENT_URL ? process.env.CLIENT_URL.replace(/\/$/, '') : '';
+
 const allowedOrigins = [
   'http://localhost:5173', // Vite dev server
-  process.env.CLIENT_URL,  // Your Vercel frontend URL
+  clientUrl,  // Your Vercel frontend URL
 ].filter(Boolean);
 
 app.use(cors({
